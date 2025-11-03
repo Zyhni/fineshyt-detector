@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI FINESHYT DETECTOR</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FINESHYT DETECTOR</h1>
+            <p>UPLOAD FOTO LU, GUA BAKAL KASI TAU SEBERAPA FINESHYT LU!</p>
+        </header>
+
+        <div class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <i class="upload-icon">📷</i>
+                    <p>SERET FOTO</p>
+                    <p class="subtext">atau</p>
+                    <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+                        PILIH FOTO BRO
+                    </button>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+                </div>
+            </div>
+        </div>
+
+        <div class="result-section" id="resultSection" style="display: none;">
+            <div class="result-container">
+                <div class="image-preview">
+                    <img id="previewImage" src="" alt="Uploaded Image">
+                    <div class="image-overlay" id="imageOverlay"></div>
+                </div>
+                
+                <div class="analysis-result">
+                    <div class="score-display">
+                        <div class="score-circle" id="scoreCircle">
+                            <span id="scoreValue">0</span>%
+                        </div>
+                        <h3 id="feedbackText"></h3>
+                    </div>
+
+                    <div class="factors-list">
+                        <h4>🔍 DETAIL FINESHYT ANALYSIS:</h4>
+                        <ul id="factorsList"></ul>
+                    </div>
+
+                    <div class="music-player">
+                        <h4>🎵 LAGU YANG COCOK:</h4>
+                        <div id="musicInfo"></div>
+                        <div id="spotifyPlayer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-secondary" onclick="resetAnalysis()">CEK FOTO LAIN</button>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>SABAR, AI LAGI ANALYZE...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
